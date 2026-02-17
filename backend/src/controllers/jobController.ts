@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/db';
 import { z } from 'zod';
 
-const prisma = new PrismaClient();
 
 const createJobSchema = z.object({
     title: z.string().min(3),

@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/db';
 import { hashPassword, comparePassword } from '../utils/password';
 import { generateToken } from '../utils/jwt';
 import { z } from 'zod';
 
-const prisma = new PrismaClient();
 
 const registerSchema = z.object({
     name: z.string().min(2),

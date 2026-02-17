@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/db';
 import { z } from 'zod';
 
-const prisma = new PrismaClient();
 
 const applySchema = z.object({
     jobId: z.string(),
