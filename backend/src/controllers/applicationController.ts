@@ -39,15 +39,15 @@ export const applyForJob = async (req: Request, res: Response) => {
         });
 
         res.status(201).json(application);
-    } catch (error) {
-        if (error instanceof z.ZodError) return res.status(400).json({ error: error.errors });
+    } catch (error: any) {
+        if (error instanceof z.ZodError) return res.status(400).json({ error: error.issues });
         res.status(500).json({ error: 'Failed to apply' });
     }
 };
 
 export const getApplicationsForJob = async (req: Request, res: Response) => {
     try {
-        const { jobId } = req.params;
+        const { jobId } = req.params as { jobId: string };
 
         // Authorization: Only Recruiter who posted it or Admin
         const job = await prisma.job.findUnique({ where: { id: jobId } });
@@ -86,7 +86,7 @@ export const getMyApplications = async (req: Request, res: Response) => {
 
 export const updateApplicationStatus = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { id } = req.params as { id: string };
         const { status } = updateStatusSchema.parse(req.body);
 
         const application = await prisma.application.findUnique({
@@ -96,7 +96,8 @@ export const updateApplicationStatus = async (req: Request, res: Response) => {
 
         if (!application) return res.status(404).json({ error: 'Application not found' });
 
-        // Auth check
+        // Auth check - application.job might be undefined if not included properly, but findUnique returns null if not found.
+        // Prisma typing for include should make job present.
         if (req.user?.role !== 'ADMIN' && application.job.recruiter_id !== req.user?.userId) {
             return res.status(403).json({ error: 'Unauthorized to update this application' });
         }
@@ -112,8 +113,8 @@ export const updateApplicationStatus = async (req: Request, res: Response) => {
         });
 
         res.json(updated);
-    } catch (error) {
-        if (error instanceof z.ZodError) return res.status(400).json({ error: error.errors });
+    } catch (error: any) {
+        if (error instanceof z.ZodError) return res.status(400).json({ error: error.issues });
         res.status(500).json({ error: 'Failed to update status' });
     }
 };

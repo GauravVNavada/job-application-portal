@@ -25,8 +25,8 @@ export const createJob = async (req: Request, res: Response) => {
         });
 
         res.status(201).json(job);
-    } catch (error) {
-        if (error instanceof z.ZodError) return res.status(400).json({ error: error.errors });
+    } catch (error: any) {
+        if (error instanceof z.ZodError) return res.status(400).json({ error: error.issues });
         res.status(500).json({ error: 'Failed to create job' });
     }
 };
@@ -45,7 +45,7 @@ export const getJobs = async (req: Request, res: Response) => {
 
 export const getJobById = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { id } = req.params as { id: string };
         const job = await prisma.job.findUnique({
             where: { id },
             include: { recruiter: { select: { name: true } } },
@@ -60,7 +60,7 @@ export const getJobById = async (req: Request, res: Response) => {
 
 export const closeJob = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { id } = req.params as { id: string };
 
         // Check if job exists and belongs to recruiter (or is admin)
         // For simplicity, allowedRoles middleware handles role check, but ownership check is here.
