@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { useRouter } from 'next/navigation';
+import { authService } from '@/services/auth';
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -21,13 +22,10 @@ export default function RegisterPage() {
         setError('');
 
         try {
-            // TODO: Replace with actual API call
-            console.log('Registering', { name, email, password, role });
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            // router.push('/login');
-        } catch (err) {
-            setError('Registration failed');
+            await authService.register({ name, email, password, role });
+            router.push('/login');
+        } catch (err: any) {
+            setError(err.response?.data?.error || 'Registration failed');
         } finally {
             setIsLoading(false);
         }

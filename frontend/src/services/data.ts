@@ -32,6 +32,11 @@ export const jobService = {
         return response.data;
     },
 
+    getMyJobs: async () => {
+        const response = await api.get<Job[]>('/jobs/my-jobs');
+        return response.data;
+    },
+
     createJob: async (data: { title: string; description: string }) => {
         const response = await api.post<Job>('/jobs', data);
         return response.data;
@@ -45,6 +50,21 @@ export const jobService = {
     closeJob: async (id: string) => {
         const response = await api.patch<Job>(`/jobs/${id}/close`);
         return response.data;
+    },
+
+    deleteJob: async (id: string) => {
+        await api.delete(`/jobs/${id}`);
+    }
+};
+
+export const userService = {
+    getAllUsers: async () => {
+        const response = await api.get<any[]>('/users');
+        return response.data;
+    },
+
+    deleteUser: async (id: string) => {
+        await api.delete(`/users/${id}`);
     }
 };
 

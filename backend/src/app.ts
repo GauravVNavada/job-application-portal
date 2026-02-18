@@ -15,10 +15,12 @@ app.use(morgan('dev'));
 import authRoutes from './routes/authRoutes';
 import jobRoutes from './routes/jobRoutes';
 import applicationRoutes from './routes/applicationRoutes';
+import userRoutes from './routes/userRoutes';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', applicationRoutes);
+app.use('/api/users', userRoutes);
 
 // Basic route
 app.get('/', (req, res) => {

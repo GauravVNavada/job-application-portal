@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
+import { authService } from '@/services/auth';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -13,21 +15,18 @@ export default function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
+    const { login } = useAuth();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
 
         try {
-            // TODO: Replace with actual API call
-            console.log('Logging in with', email, password);
-            // Simulate delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            // Mock success for now
-            // router.push('/dashboard');
-        } catch (err) {
-            setError('Invalid credentials');
+            const data = await authService.login({ email, password });
+            login(data.token, data.user);
+        } catch (err: any) {
+            setError(err.response?.data?.error || 'Invalid credentials');
         } finally {
             setIsLoading(false);
         }
