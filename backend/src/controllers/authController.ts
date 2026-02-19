@@ -48,6 +48,7 @@ export const register = async (req: Request, res: Response) => {
             user: { id: user.id, name: user.name, email: user.email, role: user.role },
         });
     } catch (error: any) {
+        console.error('Register Error:', error);
         if (error instanceof z.ZodError) {
             return res.status(400).json({ error: error.issues });
         }
@@ -77,9 +78,10 @@ export const login = async (req: Request, res: Response) => {
             user: { id: user.id, name: user.name, email: user.email, role: user.role },
         });
     } catch (error: any) {
+        console.error('Login Error:', error);
         if (error instanceof z.ZodError) {
             return res.status(400).json({ error: error.issues });
         }
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 };

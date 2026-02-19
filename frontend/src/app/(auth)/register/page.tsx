@@ -74,7 +74,7 @@ export default function RegisterPage() {
                             <select
                                 value={role}
                                 onChange={(e) => setRole(e.target.value)}
-                                className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                                 <option value="APPLICANT">Job Seeker</option>
                                 <option value="RECRUITER">Recruiter</option>
