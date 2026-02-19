@@ -1,8 +1,12 @@
 {
     "name": "job-portal-monorepo",
     "version": "1.0.0",
+    "workspaces": [
+        "frontend",
+        "backend"
+    ],
     "scripts": {
-        "postinstall": "cd backend && npm install && npx prisma generate"
+        "postinstall": "npx prisma generate --schema=backend/prisma/schema.prisma"
     },
     "dependencies": {},
     "devDependencies": {}
