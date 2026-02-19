@@ -9,5 +9,7 @@
         "postinstall": "npx prisma generate --schema=backend/prisma/schema.prisma"
     },
     "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {
+        "prisma": "5.10.2"
+    }
 }
