@@ -22,6 +22,10 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/users', userRoutes);
 
+// Temporary Setup Route (Remove in Production later)
+import adminSetupRoutes from './routes/adminSetupRoutes';
+app.use('/api/admin-setup', adminSetupRoutes);
+
 // Basic route
 app.get('/', (req, res) => {
     res.json({ message: 'Job Application Portal API is running' });
