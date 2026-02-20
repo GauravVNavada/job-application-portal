@@ -2,7 +2,7 @@
 
 ## 🚀 Live Demo
 
-**🌐 Vercel**: [job-application-portal-delta.vercel.app](https://job-application-portal-delta.vercel.app)
+**🌐 Vercel**: [job-application-portal-opal.vercel.app](https://job-application-portal-opal.vercel.app)
 **📦 GitHub**: [github.com/GauravVNavada/job-application-portal](https://github.com/GauravVNavada/job-application-portal)
 
 ### Demo Credentials
