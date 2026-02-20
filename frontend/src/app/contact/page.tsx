@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Briefcase, ArrowLeft, Mail, MapPin, Phone, Globe, Linkedin, Github } from 'lucide-react';
 
