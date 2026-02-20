@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { jobService } from '@/services/data';
 import { useRouter } from 'next/navigation';
+import { FileText, ArrowLeft } from 'lucide-react';
 
 export default function PostJobPage() {
     const router = useRouter();
@@ -33,35 +34,49 @@ export default function PostJobPage() {
     return (
         <RouteGuard allowedRoles={['RECRUITER']}>
             <DashboardLayout>
-                <h1 className="text-3xl font-bold text-gray-900 mb-8">Post a New Job</h1>
-                <div className="bg-white p-6 rounded-xl shadow-sm border max-w-2xl">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <Input
-                            label="Job Title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            required
-                            placeholder="e.g. Senior Backend Engineer"
-                        />
+                <div className="animate-fade-in">
+                    <div className="mb-8">
+                        <h1 className="text-2xl font-bold text-gray-900">Post a New Job</h1>
+                        <p className="text-sm text-gray-500 mt-1">Fill in the details to create a new job listing</p>
+                    </div>
 
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                            <textarea
-                                className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[150px]"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
+                    <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm max-w-2xl">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <Input
+                                label="Job Title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 required
-                                placeholder="Job requirements and details..."
+                                placeholder="e.g. Senior Backend Engineer"
+                                icon={<FileText className="h-4 w-4" />}
                             />
-                        </div>
 
-                        {error && <p className="text-red-500 text-sm">{error}</p>}
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
+                                <textarea
+                                    className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 hover:border-gray-300 transition-all duration-200 min-h-[180px] resize-y"
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    required
+                                    placeholder="Describe the role, requirements, and what makes this position great..."
+                                />
+                            </div>
 
-                        <div className="flex justify-end gap-3">
-                            <Button type="button" variant="secondary" onClick={() => router.back()}>Cancel</Button>
-                            <Button type="submit" isLoading={isLoading}>Post Job</Button>
-                        </div>
-                    </form>
+                            {error && (
+                                <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg border border-red-100 animate-scale-in">
+                                    {error}
+                                </div>
+                            )}
+
+                            <div className="flex justify-end gap-3 pt-2">
+                                <Button type="button" variant="secondary" onClick={() => router.back()}>
+                                    <ArrowLeft className="h-4 w-4 mr-1.5" />
+                                    Cancel
+                                </Button>
+                                <Button type="submit" isLoading={isLoading}>Post Job</Button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </DashboardLayout>
         </RouteGuard>

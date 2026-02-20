@@ -31,7 +31,7 @@ export default function Home() {
             Sign In
           </Link>
           <Link
-            className="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors px-4 py-2 rounded-lg shadow-sm"
+            className="text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-colors px-4 py-2 rounded-lg shadow-sm"
             href="/register"
           >
             Get Started
@@ -47,14 +47,14 @@ export default function Home() {
 
           <div className="relative container px-4 md:px-6 mx-auto py-20 md:py-32 lg:py-40">
             <div className="flex flex-col items-center space-y-6 text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium">
+              <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-medium">
                 <Zap className="h-3.5 w-3.5" />
                 Trusted by 10,000+ professionals
               </div>
 
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-tight">
                 Find Your{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                   Dream Job
                 </span>{" "}
                 Today
@@ -68,7 +68,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <Link
-                  className="inline-flex h-12 items-center justify-center rounded-xl bg-blue-600 px-8 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30 hover:-translate-y-0.5"
+                  className="inline-flex h-12 items-center justify-center rounded-xl bg-indigo-600 px-8 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-600/30 hover:-translate-y-0.5"
                   href="/register"
                 >
                   Start Your Journey
@@ -89,7 +89,7 @@ export default function Home() {
                   Free to use
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Shield className="h-4 w-4 text-blue-500" />
+                  <Shield className="h-4 w-4 text-indigo-500" />
                   Secure & Private
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -117,7 +117,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {/* Job Seekers */}
               <div className="group relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 transition-all hover:shadow-lg hover:-translate-y-1">
-                <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center mb-6">
+                <div className="h-12 w-12 rounded-xl bg-indigo-600 flex items-center justify-center mb-6">
                   <Search className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -125,15 +125,15 @@ export default function Home() {
                 </h3>
                 <ul className="space-y-2.5 text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 shrink-0" />
                     <span>Browse and discover open positions</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 shrink-0" />
                     <span>Apply with a single click</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 shrink-0" />
                     <span>Track application status in real-time</span>
                   </li>
                 </ul>
@@ -180,7 +180,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="text-center">
-                <div className="h-14 w-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl font-bold mx-auto mb-5">
+                <div className="h-14 w-14 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl font-bold mx-auto mb-5">
                   1
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -222,32 +222,32 @@ export default function Home() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1">
                   500+
                 </div>
-                <div className="text-blue-200 text-sm">Jobs Posted</div>
+                <div className="text-indigo-200 text-sm">Jobs Posted</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1">
                   2,000+
                 </div>
-                <div className="text-blue-200 text-sm">Applications</div>
+                <div className="text-indigo-200 text-sm">Applications</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1">
                   150+
                 </div>
-                <div className="text-blue-200 text-sm">Recruiters</div>
+                <div className="text-indigo-200 text-sm">Recruiters</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1">
                   98%
                 </div>
-                <div className="text-blue-200 text-sm">Satisfaction</div>
+                <div className="text-indigo-200 text-sm">Satisfaction</div>
               </div>
             </div>
           </div>
@@ -257,7 +257,7 @@ export default function Home() {
         <section className="py-20 md:py-28 bg-white">
           <div className="container px-4 md:px-6 mx-auto text-center">
             <div className="max-w-2xl mx-auto">
-              <TrendingUp className="h-10 w-10 text-blue-600 mx-auto mb-6" />
+              <TrendingUp className="h-10 w-10 text-indigo-600 mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Ready to Get Started?
               </h2>
@@ -266,7 +266,7 @@ export default function Home() {
                 to advance their careers and find top talent.
               </p>
               <Link
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-blue-600 px-8 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-xl hover:-translate-y-0.5"
+                className="inline-flex h-12 items-center justify-center rounded-xl bg-indigo-600 px-8 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-0.5"
                 href="/register"
               >
                 Create Free Account
@@ -282,7 +282,7 @@ export default function Home() {
         <div className="container px-4 md:px-6 mx-auto py-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+              <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
                 <Briefcase className="h-3.5 w-3.5 text-white" />
               </div>
               <span className="font-bold text-gray-900">JobPortal</span>
@@ -293,19 +293,19 @@ export default function Home() {
             <nav className="flex gap-6">
               <Link
                 className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-                href="#"
+                href="/terms"
               >
                 Terms
               </Link>
               <Link
                 className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-                href="#"
+                href="/privacy"
               >
                 Privacy
               </Link>
               <Link
                 className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-                href="#"
+                href="/contact"
               >
                 Contact
               </Link>

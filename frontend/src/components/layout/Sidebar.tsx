@@ -13,7 +13,10 @@ import {
     LayoutDashboard,
     PlusCircle,
     Menu,
-    X
+    X,
+    Shield,
+    Search,
+    FolderOpen,
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -29,9 +32,9 @@ export default function Sidebar() {
         { name: 'Manage Jobs', href: '/admin?tab=jobs', icon: Briefcase, roles: ['ADMIN'] },
         { name: 'Manage Users', href: '/admin?tab=users', icon: Users, roles: ['ADMIN'] },
         { name: 'Post Job', href: '/recruiter/jobs/new', icon: PlusCircle, roles: ['RECRUITER'] },
-        { name: 'My Posted Jobs', href: '/recruiter/my-jobs', icon: Briefcase, roles: ['RECRUITER'] },
+        { name: 'My Posted Jobs', href: '/recruiter/my-jobs', icon: FolderOpen, roles: ['RECRUITER'] },
         { name: 'My Applications', href: '/applicant/applications', icon: FileText, roles: ['APPLICANT'] },
-        { name: 'Find Jobs', href: '/applicant/jobs', icon: Briefcase, roles: ['APPLICANT'] },
+        { name: 'Find Jobs', href: '/applicant/jobs', icon: Search, roles: ['APPLICANT'] },
     ];
 
     const filteredLinks = links.filter(link => link.roles.includes(user.role));
@@ -50,11 +53,28 @@ export default function Sidebar() {
         return pathname === linkHref;
     };
 
+    const roleBadge = {
+        ADMIN: { label: 'Admin', color: 'bg-red-100 text-red-700 border-red-200', icon: Shield },
+        RECRUITER: { label: 'Recruiter', color: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: Briefcase },
+        APPLICANT: { label: 'Seeker', color: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: Search },
+    };
+
+    const badge = roleBadge[user.role];
+    const BadgeIcon = badge.icon;
+
     const sidebarContent = (
         <>
             <div className="px-4 py-6">
-                <h1 className="text-2xl font-bold text-gray-900 mb-8">JobPortal</h1>
-                <nav className="space-y-2">
+                {/* Logo */}
+                <div className="flex items-center gap-2.5 mb-8 px-2">
+                    <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-md shadow-indigo-600/20">
+                        <Briefcase className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-xl font-bold text-gray-900">JobPortal</span>
+                </div>
+
+                {/* Navigation */}
+                <nav className="space-y-1">
                     {filteredLinks.map((link) => {
                         const Icon = link.icon;
                         const active = isLinkActive(link.href);
@@ -65,27 +85,34 @@ export default function Sidebar() {
                                 href={link.href}
                                 onClick={() => setMobileOpen(false)}
                                 className={cn(
-                                    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                                    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
                                     active
-                                        ? "bg-blue-50 text-blue-700"
-                                        : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                                        ? "bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-700 shadow-sm border border-indigo-100"
+                                        : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
                                 )}
                             >
-                                <Icon className="h-4 w-4" />
+                                <Icon className={cn("h-4 w-4", active ? "text-indigo-600" : "")} />
                                 {link.name}
                             </Link>
                         );
                     })}
                 </nav>
             </div>
-            <div className="p-4 border-t">
-                <div className="mb-4">
-                    <p className="text-sm font-medium text-gray-900">{user.name}</p>
-                    <p className="text-xs text-gray-500 capitalize">{user.role.toLowerCase()}</p>
+
+            {/* User section */}
+            <div className="p-4 border-t border-gray-100">
+                <div className="mb-3 px-2">
+                    <div className="flex items-center justify-between mb-1">
+                        <p className="text-sm font-semibold text-gray-900 truncate">{user.name}</p>
+                    </div>
+                    <div className={cn("inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border", badge.color)}>
+                        <BadgeIcon className="h-2.5 w-2.5" />
+                        {badge.label}
+                    </div>
                 </div>
                 <button
                     onClick={() => { setMobileOpen(false); logout(); }}
-                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 transition-all duration-200 cursor-pointer"
                 >
                     <LogOut className="h-4 w-4" />
                     Sign Out
@@ -98,25 +125,25 @@ export default function Sidebar() {
         <>
             {/* Mobile hamburger button */}
             <button
-                className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-md border"
+                className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-xl bg-white shadow-lg border border-gray-100"
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
             >
-                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {mobileOpen ? <X className="h-5 w-5 text-gray-700" /> : <Menu className="h-5 w-5 text-gray-700" />}
             </button>
 
             {/* Mobile overlay */}
             {mobileOpen && (
                 <div
-                    className="md:hidden fixed inset-0 bg-black/50 z-30"
+                    className="md:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-30 transition-opacity"
                     onClick={() => setMobileOpen(false)}
                 />
             )}
 
-            {/* Sidebar - desktop: static, mobile: slide-in */}
+            {/* Sidebar */}
             <div className={cn(
-                "fixed md:static inset-y-0 left-0 z-40 flex h-screen flex-col justify-between border-r bg-white w-64 transition-transform duration-200 ease-in-out",
-                mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+                "fixed md:static inset-y-0 left-0 z-40 flex h-screen flex-col justify-between bg-white border-r border-gray-100 w-64 transition-transform duration-300 ease-in-out",
+                mobileOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full md:translate-x-0"
             )}>
                 {sidebarContent}
             </div>
