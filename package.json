@@ -6,7 +6,7 @@
         "backend"
     ],
     "scripts": {
-        "postinstall": "npm rebuild prisma && npx prisma generate --schema=backend/prisma/schema.prisma"
+        "postinstall": "npm rebuild prisma && npm rebuild lightningcss && npx prisma generate --schema=backend/prisma/schema.prisma"
     },
     "dependencies": {},
     "devDependencies": {
