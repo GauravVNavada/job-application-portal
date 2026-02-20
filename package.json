@@ -8,7 +8,9 @@
     "scripts": {
         "postinstall": "npm rebuild prisma && npm rebuild lightningcss && npm rebuild @tailwindcss/oxide && npx prisma generate --schema=backend/prisma/schema.prisma || true"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@prisma/client": "5.10.2"
+    },
     "devDependencies": {
         "prisma": "5.10.2"
     }
