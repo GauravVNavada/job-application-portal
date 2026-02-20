@@ -72,7 +72,7 @@ export default function MyJobsPage() {
                                                 </span>
                                             </div>
                                             <div className="flex gap-2 w-full sm:w-auto">
-                                                <Link href={`/recruiter/jobs/${job.id}/applications`} className="flex-1 sm:flex-none">
+                                                <Link href={`/recruiter/applications?jobId=${job.id}`} className="flex-1 sm:flex-none">
                                                     <Button variant="secondary" size="sm" className="w-full sm:w-auto">
                                                         <Eye className="h-3.5 w-3.5 mr-1.5" />
                                                         Applications
