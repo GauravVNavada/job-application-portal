@@ -19,6 +19,9 @@ import userRoutes from './routes/userRoutes';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/applications', applicationRoutes);
+app.use('/api/users', userRoutes);
+
 // Basic route
 app.get('/', (req, res) => {
     res.json({ message: 'Job Application Portal API is running' });
